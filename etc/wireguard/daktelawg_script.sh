@@ -1,13 +1,10 @@
 #!/bin/bash
 
-
 action=$1
 wg_interface=$2
 wg_server=$3
 url_get_routes=$4
 metric=8;
-
-
 
 add_route() {
     local net=$1
@@ -103,10 +100,7 @@ run_down() {
 }
 
 if [ "${action}" == "up" ]; then
-    run_up
+    run_up || exit $?
 else
-    run_down
+    run_down || exit $?
 fi
-
-
-
